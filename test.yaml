@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-app2
+  namespace: deploy-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-app2
+  template:
+    metadata:
+      labels:
+        app: test-app2
+    spec:
+      containers:
+      - name: test-app2
+        image: akzajohn/kubhello:v1
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 5000
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-app-service
+  namespace: deploy-ns
+spec:
+  selector:
+    app: test-app2
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: NodePort
+
