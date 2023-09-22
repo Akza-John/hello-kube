@@ -8,7 +8,7 @@ pool:
 
 
 steps:
-- script: sudo docker build -t $(Build.Repository.Name):$(Build.BuildId) .
+- script: sudo docker build -t kubehello:$(Build.BuildId) .
   displayName: 'Build Docker Image...'
 
 
@@ -19,5 +19,5 @@ steps:
 
  
 
-- script: sudo docker tag $(Build.Repository.Name):$(Build.BuildId) ajacr001.azurecr.io/(Build.Repository.Name):$(Build.BuildId);
+- script: sudo docker tag kubehello:$(Build.BuildId) ajacr001.azurecr.io/kubehello:$(Build.BuildId);
   displayName: 'Tag Docker Image'
