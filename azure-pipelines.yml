@@ -24,7 +24,7 @@ variables:
   imagePullSecret: 'ajacr00110556dab-auth'
 
   # Agent VM image name
-  vmImageName: 'ubuntu-latest'
+  
 
   # Name of the new namespace being created to deploy the PR changes.
   k8sNamespaceForPR: 'review-app-$(System.PullRequest.PullRequestId)'
