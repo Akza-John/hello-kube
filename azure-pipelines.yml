@@ -6,8 +6,7 @@ pool:
   demands:
   - agent.name -equals myagent01
 
- resources:
-- repo: self
+
 
 
 steps:
