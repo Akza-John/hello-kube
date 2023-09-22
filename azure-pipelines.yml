@@ -34,7 +34,7 @@ steps:
 
 - script:  
     kubectl apply -f deployment.yaml;
-    kubectl create namespace deploy-ns
+    kubectl create namespace deploy-ns;
     kubectl get namespaces;
     kubectl get pods -n deploy-ns;
     kubectl get services -n deploy-ns;
