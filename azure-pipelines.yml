@@ -6,7 +6,7 @@ trigger:
 - main
 
 pool:
-  name: 'agent-001'
+  name: 'Default'
   demands:
   - agent.name -equals myagent01
 
