@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: hellokubev4 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hellokubev4
+  template:
+    metadata:
+      labels:
+        app: hellokubev4 
+    spec:
+      containers:
+        - name: hellokubev4 
+          image: ajacr001.azurecr.io/hellokubev4
+          ports:
+          - containerPort: 80
