@@ -15,5 +15,5 @@ steps:
 
 - script: 
     pwd;
-    sudo docker login -u ajacr001 --password 'IuZF/+jnjj2/GAv9IKNih1HkMIMDZ/0WuHpNeEexlW+ACRBw4VQK'  ajacr2691.azurecr.io;
+    sudo docker login -u ajacr001 --password "IuZF/+jnjj2/GAv9IKNih1HkMIMDZ/0WuHpNeEexlW+ACRBw4VQK" ajacr001.azurecr.io;
   displayName: 'Docker Login..'
