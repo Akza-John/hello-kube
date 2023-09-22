@@ -7,8 +7,6 @@ pool:
   - agent.name -equals myagent01
 
 
-
-
 steps:
 - script: sudo docker build -t $(Build.Repository.Name):$(Build.BuildId) .
   displayName: 'Build Docker Image...'
