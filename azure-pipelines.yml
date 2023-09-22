@@ -16,8 +16,23 @@ steps:
     pwd;
     sudo docker login -u ajacr001 --password "IuZF/+jnjj2/GAv9IKNih1HkMIMDZ/0WuHpNeEexlW+ACRBw4VQK"  ajacr001.azurecr.io;
   displayName: 'Docker Login..'
-
  
 
 - script: sudo docker tag kubehello:$(Build.BuildId) ajacr001.azurecr.io/kubehello:$(Build.BuildId);
   displayName: 'Tag Docker Image'
+  
+- script: 
+    newImage="ajacr001.azurecr.io/kubehello:$(Build.BuildId)";
+    print $newImage;
+    sed -i "s|<<Image>>|$newImage|g" deployment.yaml;
+  displayName: "Image Script"
+
+
+- script:
+    sudo docker push ajacr001.azurecr.io/kubehello:$(Build.BuildId);
+  displayName: 'Push Docker Image to ACR'
+
+- script:  
+    kubectl apply -f deployment.yaml;
+    kubectl get pods -n my-namespace;
+    kubectl get services -n my-namespace
