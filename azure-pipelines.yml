@@ -8,7 +8,7 @@ trigger:
 pool:
   name: 'agent-001'
   demands:
-  - agent.name -equals agent
+  - agent.name -equals myagent01
 
 resources:
 - repo: self
