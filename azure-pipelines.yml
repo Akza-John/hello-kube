@@ -6,14 +6,21 @@ pool:
   demands:
   - agent.name -equals myagent01
 
+ resources:
+- repo: self
 
 
 steps:
-- script: sudo docker build -t akzajohn/kubehello:v5 .
+- script: sudo docker build -t $(Build.Repository.Name):$(Build.BuildId) .
   displayName: 'Build Docker Image...'
 
 
 - script: 
     pwd;
-    sudo docker login -u ajacr001 --password "IuZF/+jnjj2/GAv9IKNih1HkMIMDZ/0WuHpNeEexlW+ACRBw4VQK" ajacr001.azurecr.io;
+    sudo docker login -u ajacr001 --password "IuZF/+jnjj2/GAv9IKNih1HkMIMDZ/0WuHpNeEexlW+ACRBw4VQK"  ajacr001.azurecr.io;
   displayName: 'Docker Login..'
+
+ 
+
+- script: sudo docker tag $(Build.Repository.Name):$(Build.BuildId) ajacr001.azurecr.io/(Build.Repository.Name):$(Build.BuildId);
+  displayName: 'Tag Docker Image'
