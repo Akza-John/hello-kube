@@ -9,7 +9,6 @@ pool:
   name: 'agent-001'
   demands:
   - agent.name -equals agent
-  
 resources:
 - repo: self
 
