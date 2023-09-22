@@ -17,7 +17,7 @@ variables:
 
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '8db99cf3-b5ad-49af-9de9-560eb3300a48'
-  imageRepository: 'hellokubev4'
+  imageRepository: 'hello-kube:v4'
   containerRegistry: 'ajacr001.azurecr.io'
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
