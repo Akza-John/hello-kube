@@ -38,4 +38,4 @@ steps:
     kubectl config current-context;
     kubectl get all -n deploy-ns;
     kubectl get pods -n deploy-ns;   
-    kubectl get services -n deploy-ns;
+    kubectl get services;
