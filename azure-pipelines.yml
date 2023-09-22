@@ -9,6 +9,7 @@ pool:
   name: 'agent-001'
   demands:
   - agent.name -equals agent
+
 resources:
 - repo: self
 
@@ -23,7 +24,7 @@ variables:
   imagePullSecret: 'ajacr00110556dab-auth'
 
   # Agent VM image name
-  vmImageName : agent
+ # vmImageName : agent
 
   # Name of the new namespace being created to deploy the PR changes.
   k8sNamespaceForPR: 'review-app-$(System.PullRequest.PullRequestId)'
@@ -34,8 +35,8 @@ stages:
   jobs:
   - job: Build
     displayName: Build
-    pool:
-      vmImage: $(vmImageName)
+#    pool:
+#      vmImage: $(vmImageName)
     steps:
     - task: Docker@2
       displayName: Build and push an image to container registry
@@ -58,8 +59,8 @@ stages:
   - deployment: Deploy
     condition: and(succeeded(), not(startsWith(variables['Build.SourceBranch'], 'refs/pull/')))
     displayName: Deploy
-    pool:
-      vmImage: $(vmImageName)
+#    pool:
+#      vmImage: $(vmImageName)
     environment: 'AkzaJohnhellokube.default'
     strategy:
       runOnce:
@@ -87,8 +88,8 @@ stages:
   - deployment: DeployPullRequest
     displayName: Deploy Pull request
     condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/pull/'))
-    pool:
-      vmImage: $(vmImageName)
+#    pool:
+#      vmImage: $(vmImageName)
 
     environment: 'AkzaJohnhellokube.$(k8sNamespaceForPR)'
     strategy:
